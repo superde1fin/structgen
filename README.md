@@ -64,12 +64,12 @@ structgen [subcommand] [options]
 
 ### Available subcommands:
 
-- `shik`: Generate an initial structure for SHIK-type potentials (CHARGE style)
+- `charge`: Generate an initial structure for charge atom_style
 
 ### Example usage:
 
 ```bash
-structgen shik -a 28.085 -a 16.00 2 -1.2 -d 2.2 -f 100 -o si_o_glass.structure
+structgen charge -a 28.085 -a 16.00 2 -1.2 -d 2.2 -f 100 -o si_o_glass.structure
 ```
 
 This generates a structure with 100 Si atoms (mass 28.085) and 200 O atoms (mass 16.00, charge -1.2), with an overall density of 2.2 g/cm³. The structure will be written to `si_o_glass.structure`.
@@ -79,7 +79,7 @@ This generates a structure with 100 Si atoms (mass 28.085) and 200 O atoms (mass
 All subcommands support `-h` or `--help` flags for detailed usage:
 
 ```bash
-structgen shik --help
+structgen charge --help
 ```
 
 ## Design Overview

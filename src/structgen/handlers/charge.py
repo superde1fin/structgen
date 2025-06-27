@@ -45,7 +45,6 @@ class CHARGE:
 
                 if count_str.isdigit():
                     add_atoms = args.factor*int(count_str)
-                    self.COUNTS.append(add_atoms)
                 else:
                     sys.exit(f"ERROR! Non‑numeric value for atom mass: '{mass_str}'.")
 
@@ -63,6 +62,7 @@ class CHARGE:
             else:
                 self.CHARGES.append(constants.DEFAULT_ATOM_CHARGE)
 
+            self.COUNTS.append(add_atoms)
             self.NATOMS += add_atoms
             self.TOTAL_MASS += (mass_val * add_atoms)
 
@@ -86,7 +86,7 @@ class CHARGE:
         return self.NUM_TYPES
 
     def get_sim_region_sides(self):
-        return (self.REGION_SIDE)*3
+        return [self.REGION_SIDE]*3
 
     def get_outfile_name(self):
         return self.OUTFILE
@@ -114,7 +114,7 @@ class CHARGE:
                     if cur_pos not in pos_visited:
                         found_unused_pos = True
 
-                self.ATOM_DATA[atoms_counter] = np.array([atoms_counter, i + 1, self.CHARGES[i], *cur_pos])
+                self.ATOM_DATA[atoms_counter] = np.array([atoms_counter + 1, i + 1, self.CHARGES[i], *cur_pos])
                 pos_visited.append(cur_pos)
                 atoms_counter += 1
 

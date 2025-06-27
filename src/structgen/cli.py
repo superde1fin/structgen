@@ -18,11 +18,11 @@ def parse_args():
 
     subparsers = parser.add_subparsers(dest = "command", required = True, metavar = "")
 
-    charge = subparsers.add_parser("shik", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style CHARGE.")
+    charge = subparsers.add_parser("charge", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style CHARGE.")
 
     charge.add_argument(
         "-a", "--atom",
-        metavar = ("MASS", "COUNT", "CHARGE"),
+        metavar = "",
         nargs = "+",
         action = "append",
         required = True,
@@ -38,6 +38,7 @@ def parse_args():
         "-d", "--density",
         type = float,
         required = True,
+        metavar = "",
         help = "Desired density of the output structure in g/cm^3.",
     )
 
@@ -45,19 +46,22 @@ def parse_args():
         "-b", "--buffer",
         type=float,
         default = constants.DEFAULT_BUFFER_PERCENT,
-        help = "Spacing between simulation region walls in % of box size (default: 5).",
+        metavar = "",
+        help = "Spacing between simulation region walls in %% of box size (default: 5).",
     )
 
     charge.add_argument(
         "-f", "--factor",
         type = int,
         default = constants.DEFAULT_ATOM_FACTOR,
+        metavar = "",
         help = "Scale factor applied to all atom counts (default: 1).",
     )
 
     charge.add_argument(
         "-o", "--output",
         default = constants.DEFAULT_FILENAME,
+        metavar = "",
         help = "Name of the resulting structure file (default: initial.structure).",
     )
 
@@ -84,10 +88,16 @@ def gen_header(handler):
 def gen_atoms(handler):
 
     atoms = str()
-    atoms += f"Atoms # {handler.get_atom_style()} {*handler.get_atom_attrs()}\n\n"
+    column_headers = ' '.join(handler.get_atom_attrs())
+    atoms += f"Atoms # {handler.get_atom_style()} | {column_headers}\n\n"
 
     atom_data = handler.get_atom_data()
-    atoms += "\n".join(" ".join(str(x) for x in row) for row in atom_data)
+
+    #Add atom lines and convert necesary elements to integers
+    indices_to_int = [0, 1]
+    atoms += "\n".join(" ".join(str(int(x)) if i in indices_to_int else str(x) for i, x in enumerate(row)) for row in atom_data)
+
+    return atoms
 
 
 def main():
