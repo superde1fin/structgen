@@ -1,0 +1,70 @@
+#  LAMMPS structure generator by Vasilii Maksimov
+#  Repository: https://github.com/superde1fin/structgen
+#  License: GNU GPLv3
+###############################################################################
+
+[build-system]
+requires      = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+###############################################################################
+#  Core metadata
+###############################################################################
+[project]
+name            = "lammps-structgen"
+version         = "0.1.0"
+description     = "Generator for LAMMPS initial atomic structures for glassy systems."
+readme          = "README.md"
+requires-python = ">=3.9"
+license         = { text = "GPL-3.0-only" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/structgen"]
+
+authors = [
+  { name = "Vasilii Maksimov", email = "VasiliiMaksimov@my.unt.edu" }
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Science/Research",
+  "Environment :: Console",
+  "Topic :: Scientific/Engineering :: Chemistry",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+
+###############################################################################
+#  Runtime dependencies
+###############################################################################
+dependencies = [
+  "numpy>=1.26",
+]
+
+###############################################################################
+#  Optional extras for development and publishing
+###############################################################################
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.1",
+  "mypy>=1.10",
+  "ruff>=0.4",
+  "build>=1.2",
+  "twine>=5.0",
+]
+
+###############################################################################
+#  Command-line interface
+###############################################################################
+[project.scripts]
+structgen = "structgen.cli:main"
+
+###############################################################################
+#  Project URLs (PyPI sidebar links)
+###############################################################################
+[project.urls]
+Homepage   = "https://github.com/superde1fin/structgen"
+Source     = "https://github.com/superde1fin/structgen"
+Issues     = "https://github.com/superde1fin/structgen/issues"
