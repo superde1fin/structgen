@@ -126,4 +126,4 @@ University of North Texas
 
 - [LAMMPS Official Site](https://lammps.sandia.gov)
 - [GitHub Repository](https://github.com/superde1fin/structgen)
-
+- [PyPI Page](https://pypi.org/project/lammps-tablegen)
