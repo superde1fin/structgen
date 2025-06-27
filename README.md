@@ -17,7 +17,7 @@ LAMMPS structure generator for [LAMMPS](https://lammps.sandia.gov), developed by
 
 ### Install from PyPI (coming soon)
 
-This package will be published to PyPI. Once available, you'll be able to install it with:
+Regular installation using pip and PyPI is available. To perform use:
 
 ```bash
 pip install lammps-structgen
