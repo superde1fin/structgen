@@ -106,7 +106,7 @@ Install dev dependencies:
 pip install .[dev]
 ```
 
-Run tests (if defined):
+Run tests:
 
 ```bash
 pytest

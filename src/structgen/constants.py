@@ -4,3 +4,5 @@ DEFAULT_ATOM_FACTOR = 1
 DEFAULT_BUFFER_PERCENT = 5
 
 DEFAULT_FILENAME = "initial.structure"
+
+NEED_BONDS = ["full"]
