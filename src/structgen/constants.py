@@ -3,6 +3,8 @@ DEFAULT_ATOM_CHARGE = 0.0
 DEFAULT_ATOM_FACTOR = 1
 DEFAULT_BUFFER_PERCENT = 5
 
+DEFAULT_BOND_COUNT = 1
+
 DEFAULT_FILENAME = "initial.structure"
 
-NEED_BONDS = ["full"]
+NEED_BONDS = ["full", "molecular"]

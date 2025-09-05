@@ -3,7 +3,7 @@ import numpy as np
 import random
 import argparse
 
-from .handlers import CHARGE, ATOMIC, FULL, MOLECULE
+#from .handlers import CHARGE, ATOMIC, FULL, MOLECULAR
 from . import constants
 
 def parse_args():
@@ -164,11 +164,10 @@ def parse_args():
     )
 
     full.set_defaults(handler_class = FULL)
-    """
 
-    molecule = subparsers.add_parser("molecule", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style MOLECULE.")
+    molecular = subparsers.add_parser("molecular", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style MOLECULAR.")
 
-    molecule.add_argument(
+    molecular.add_argument(
         "-a", "--atom",
         metavar = "",
         nargs = "+",
@@ -181,7 +180,20 @@ def parse_args():
         ),
     )
 
-    molecule.add_argument(
+    molecular.add_argument(
+        "-b", "--bond",
+        metavar = "",
+        nargs = "+",
+        action = "append",
+        help = (
+            "Provide <type pair> [<count>] specifying a number of bonds of a particular type.\n"
+            "Types are given to atoms according to the order specified (starting at 1)\n"
+            "Defaults: count=1.\n"
+            "Repeat for multiple bond types: -b 1-2 10 -b 3-4"
+        ),
+    )
+
+    molecular.add_argument(
         "-d", "--density",
         type = float,
         required = True,
@@ -189,15 +201,15 @@ def parse_args():
         help = "Desired density of the output structure in g/cm^3.",
     )
 
-    molecule.add_argument(
-        "-b", "--buffer",
+    molecular.add_argument(
+        "-bf", "--buffer",
         type=float,
         default = constants.DEFAULT_BUFFER_PERCENT,
         metavar = "",
         help = "Spacing between simulation region walls in %% of box size (default: 5).",
     )
 
-    molecule.add_argument(
+    molecular.add_argument(
         "-f", "--factor",
         type = int,
         default = constants.DEFAULT_ATOM_FACTOR,
@@ -205,14 +217,27 @@ def parse_args():
         help = "Scale factor applied to all atom counts (default: 1).",
     )
 
-    molecule.add_argument(
+    molecular.add_argument(
+        "--intermol",
+        type = int,
+        nargs = "+",
+        metavar = "",
+        help = (
+            "If specified this argument determines the number of bonds of each type that will be assigned to the intermolecular pairs. "
+            "The number of values provided should be less than or equal to the number of bonds requested. "
+            "When omitted this is NOT the default for all bond types meaning that structgen will attempt to assign all bonds to intramolecular pairs."
+        ),
+    )
+
+    molecular.add_argument(
         "-o", "--output",
         default = constants.DEFAULT_FILENAME,
         metavar = "",
         help = "Name of the resulting structure file (default: initial.structure).",
     )
 
-    molecule.set_defaults(handler_class = MOLECULE)
+    molecular.set_defaults(handler_class = MOLECULAR)
+    """
 
     return parser.parse_args()
 

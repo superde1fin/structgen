@@ -1,6 +1,7 @@
 from .charge import CHARGE
 from .atomic import ATOMIC
-from .full import FULL
-from .molecule import MOLECULE
+#from .full import FULL
+#from .molecular import MOLECULAR
 
-__all__ = ["CHARGE", "ATOMIC", "FULL", "MOLECULE"]
+#__all__ = ["CHARGE", "ATOMIC", "FULL", "MOLECULAR"]
+__all__ = ["CHARGE", "ATOMIC"]

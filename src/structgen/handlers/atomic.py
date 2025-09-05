@@ -51,7 +51,7 @@ class ATOMIC:
                 if count_str.isdigit():
                     add_atoms = args.factor*int(count_str)
                 else:
-                    sys.exit(f"ERROR! Non‑numeric value for atom mass: '{mass_str}'.")
+                    sys.exit(f"ERROR! Non‑numeric value for atom count: '{count_str}'.")
 
             else:
                 add_atoms = constants.DEFAULT_ATOM_COUNT*args.factor
