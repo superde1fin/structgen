@@ -4,10 +4,12 @@ import random
 import argparse
 
 #from .handlers import CHARGE, ATOMIC, FULL, MOLECULAR
+from .handlers import CHARGE, ATOMIC
 from . import constants
+from . import utils
 
 def parse_args():
-    parser = argparse.ArgumentParser(
+    parser = utils.ErrorHandlingParser(
         prog="structgen",
         description = (
             "Generate initial structures in LAMMPS format for glassy systems "
@@ -16,9 +18,9 @@ def parse_args():
         formatter_class = argparse.RawTextHelpFormatter,
     )
 
-    subparsers = parser.add_subparsers(dest = "command", required = True, metavar = "")
+    subparsers = parser.add_subparsers(dest = "command", required = True, metavar = "atom_style", action = utils.StrictSubParsersAction)
 
-    atomic = subparsers.add_parser("atomic", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style ATOMIC.")
+    atomic = subparsers.add_parser("atomic", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style ATOMIC.", formatter_class = utils.NoMetavarHelpFormatter)
 
     atomic.add_argument(
         "-a", "--atom",
@@ -66,7 +68,7 @@ def parse_args():
 
     atomic.set_defaults(handler_class = ATOMIC)
 
-    charge = subparsers.add_parser("charge", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style CHARGE.")
+    charge = subparsers.add_parser("charge", help = "Argument parser for generating initial glass structures in lammps format compliant with atom_style CHARGE.", formatter_class = utils.NoMetavarHelpFormatter)
 
     charge.add_argument(
         "-a", "--atom",

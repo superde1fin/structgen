@@ -7,7 +7,7 @@ from .charge import CHARGE
 from structgen import constants
 
 class FULL(CHARGE):
-    
+
     extra_atom_args = 1 #Molecule ID added
 
     def __init__(self, args):

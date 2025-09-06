@@ -9,7 +9,7 @@ from .atomic import ATOMIC
 from structgen import constants
 
 class MOLECULAR(ATOMIC):
-    
+
     def __init__(self, args):
 
         super().__init__(args)
@@ -23,7 +23,7 @@ class MOLECULAR(ATOMIC):
         self.BOND_TYPES = 0
         self.BOND_COUNTS = list()
         self.BONDS = list()
-        
+
         #Scan bond numbers
         for bond_data in args.bond:
             num_attrs = len(bond_data)

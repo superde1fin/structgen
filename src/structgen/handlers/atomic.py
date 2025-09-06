@@ -93,7 +93,7 @@ class ATOMIC:
         return self.OUTFILE
 
     def get_atom_data(self):
-        
+
         atoms_per_side = int(self.NATOMS**(1/3)) + 1 #Round up
         pos_options = np.linspace(self.BUFFER, self.REGION_SIDE - self.BUFFER, atoms_per_side)
 
