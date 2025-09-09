@@ -2,7 +2,7 @@
 
 LAMMPS structure generator for [LAMMPS](https://lammps.sandia.gov), developed by Vasilii Maksimov at the Functional Glasses and Materials Modeling Laboratory (FGM²L) at the University of North Texas, under the supervision of Dr. Jincheng Du.
 
-**Structgen** is a command-line utility for generating initial atomic configurations for use with LAMMPS simulations of disordered systems, especially oxide glasses. It supports CHARGE-style atom definitions and allows flexible control over atomic counts, charges, and overall density.
+**Structgen** is a command-line utility for generating initial atomic configurations for use with LAMMPS simulations of disordered systems, especially oxide glasses. It supports ATOM and CHARGE `pair_style`-based atom definitions and allows flexible control over atomic counts, charges, and overall density.
 
 ## Features
 
@@ -28,7 +28,7 @@ pip install lammps-structgen
 For the latest development version:
 
 ```bash
-pip install git+https://github.com/superde1fin/structgen.git
+pip install git+https://github.com/DuGroup-FGM2L/structgen.git
 ```
 
 ### Clone & install locally
@@ -36,7 +36,7 @@ pip install git+https://github.com/superde1fin/structgen.git
 For local experimentation or contributing:
 
 ```bash
-git clone https://github.com/superde1fin/structgen.git
+git clone https://github.com/DuGroup-FGM2L/structgen.git
 cd structgen
 
 # Standard install (no dev extras)
@@ -125,5 +125,5 @@ University of North Texas
 ## Links
 
 - [LAMMPS Official Site](https://lammps.sandia.gov)
-- [GitHub Repository](https://github.com/superde1fin/structgen)
+- [GitHub Repository](https://github.com/DuGroup-FGM2L/structgen)
 - [PyPI Page](https://pypi.org/project/lammps-tablegen)
