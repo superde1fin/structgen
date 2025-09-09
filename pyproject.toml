@@ -12,7 +12,7 @@ build-backend = "hatchling.build"
 ###############################################################################
 [project]
 name            = "lammps-structgen"
-version         = "0.1.4"
+version         = "0.1.5"
 description     = "Generator for LAMMPS initial atomic structures for glassy systems."
 readme          = "README.md"
 requires-python = ">=3.9"
