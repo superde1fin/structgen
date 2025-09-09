@@ -129,4 +129,4 @@ class ATOMIC:
         return self.ATOM_DATA
 
     def get_extra_atom_props(self, id, type, position):
-        return []
+        return [id, type]
