@@ -262,6 +262,12 @@ def gen_header(handler):
     header += f"\n0 {sides[1]} ylo yhi"
     header += f"\n0 {sides[2]} zlo zhi"
 
+    header += "\n\n"
+    header += "Masses\n\n"
+
+    for i, mass in enumerate(handler.get_masses()):
+        header += f"{i + 1} {mass}\n"
+
     return header
 
 
@@ -269,7 +275,8 @@ def gen_atoms(handler):
     atoms = str()
     atoms += "\n\n"
     column_headers = ' '.join(handler.get_atom_attrs())
-    atoms += f"Atoms # {handler.get_atom_style()} | {column_headers}\n\n"
+    atoms += f"#Attributes: {column_headers}\n"
+    atoms += f"Atoms # {handler.get_atom_style()}\n\n"
 
     atom_data = handler.get_atom_data()
 

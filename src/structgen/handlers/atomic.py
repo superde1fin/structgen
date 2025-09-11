@@ -86,6 +86,9 @@ class ATOMIC:
     def get_natom_types(self):
         return self.NUM_TYPES
 
+    def get_masses(self):
+        return self.MASSES
+
     def get_sim_region_sides(self):
         return [self.REGION_SIDE]*3
 
